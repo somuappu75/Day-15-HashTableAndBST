@@ -14,7 +14,7 @@ namespace HashTableAndBst
             string flag = "Y";
             while (flag == "Y" || flag == "y")
             {
-                Console.WriteLine("Enter Your Option\n1.FRequency Of Words \n2.FrequenCy Of Words In Paragraph");
+                Console.WriteLine("Enter Your Option\n1.FRequency Of Words \n2.FrequenCy Of Words In Paragraph\n3.Remove Word");
                 int num = Convert.ToInt32(Console.ReadLine());
                 MapNode<string, int> myMapNode = new MapNode<string, int>(6);
                 switch (num)
@@ -69,6 +69,36 @@ namespace HashTableAndBst
                             myMap.Display(i);
                         }
 
+                        break;
+
+                    case 3:
+
+                        MapNode<string, int> myMap1 = new MapNode<string, int>(10);
+                        string[] paragraph1;
+                        string input1 = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+                        paragraph1 = input1.Split(' ');
+
+                        int count1 = 1;
+                        foreach (string i in paragraph1)
+                        {
+                            counts = myMap1.CheckHash(i);
+                            if (count1 > 1)
+                            {
+                                myMap1.Add(i, counts);
+                            }
+                            else
+                            {
+                                myMap1.Add(i, 1);
+                            }
+                        }
+                        IEnumerable<string> unique = paragraph1.Distinct<string>();
+                        Console.WriteLine("\nEnter the word which you want to remove in paragraph");
+                        string removeWord = Console.ReadLine();
+                        myMap1.Remove(removeWord);
+                        foreach (var i in unique)
+                        {
+                            myMap1.Display(i);
+                        }
                         break;
 
 
