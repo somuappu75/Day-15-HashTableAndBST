@@ -46,6 +46,10 @@ namespace HashTableAndBst
                 }
             }
         }
+        public void GetSize()
+        {
+            Console.WriteLine("Size " + " " + (1 + this.leftCount + this.rightCount));
+        }
 
         public void Display()
         {
