@@ -80,6 +80,26 @@ namespace HashTableAndBst
             }
 
         }
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedListPosition(position);
+            bool itemFound = false;
+            KeyValue<K, V> founditem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> keyValue in linkedList)
+            {
+                if (keyValue.Key.Equals(key))
+                {
+                    itemFound = true;
+                    founditem = keyValue;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(founditem);
+
+            }
+        }
         // for particular key Display Linkedlist elements
         public void Display(K key)
         {
